@@ -17,7 +17,7 @@ const Watch = () => {
     const [watchs, setWatch] = useState<any>()
 
     const getWatch = async (genre: string) => {
-        const result = await NoUserAuthen.getItem(genre)
+        const result = await NoUserAuthen.getItem(genre, "")
         if (result.success) {
             setWatch(result.data)
         } else {
@@ -31,7 +31,6 @@ const Watch = () => {
 
     const toPage = useRouter()
 
-    console.log(watchs)
     return (
         <div className={`watch_body`}>
             <div className={`cover center ${currentTheme ? "background_white" : "background_black"}`}>
