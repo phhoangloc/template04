@@ -18,6 +18,10 @@
   width: calc(25% - 20px);
 }
 
+.xs4 {
+  width: calc(33.33% - 20px);
+}
+
 .xs6 {
   width: calc(50% - 20px);
 }

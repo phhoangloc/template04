@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { AlertType, setAlert } from '@/redux/reducer/alertReducer';
 import { UserAuthen } from '@/action/UserAuthen';
 import { setNotice } from '@/redux/reducer/noticeReducer';
+import App from '@/component/home/app';
 
 setAlert
 const Home = () => {
@@ -70,12 +71,14 @@ const Home = () => {
 
 
     return (
-        <div className={'home center '}>
-            <Clock />
-            <UploadButton icon={<InsertPhotoOutlinedIcon />} func={(e) => getFile(e)} />
+        <div className={' home center '}>
             {prePicture ? <Image alt="bg" src={prePicture} quality={100} fill style={{ objectFit: 'cover', zIndex: 0, opacity: 0.25 }} /> :
                 currentUser?.background?.name ? <Image alt="bg" src={process.env.google_url + currentUser?.background?.name} quality={100} fill style={{ objectFit: 'cover', zIndex: 0, opacity: 0.25 }} /> :
                     null}
+            <Clock />
+            <App />
+            {/* <UploadButton icon={<InsertPhotoOutlinedIcon />} func={(e) => getFile(e)} /> */}
+
         </div>
     )
 }

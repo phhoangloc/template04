@@ -4,6 +4,13 @@ const login = async (body: { username: string, password: string }) => {
     return result.data
 }
 
+const getItem = async (genre: string) => {
+    const result = await axios.get(process.env.server_url + genre)
+    return result.data
+
+}
+
 export const NoUserAuthen = {
-    login
+    login,
+    getItem
 }

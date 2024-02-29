@@ -23,6 +23,14 @@ div {
     box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.background_white {
+    background-color: white;
+}
+
 .light {
     background-color: var(--light);
     color: #222;
@@ -36,12 +44,15 @@ div {
 .background_dark {
     background-color: var(--background-dark);
     color: white;
-
 }
 
 .dark {
     background-color: var(--dark);
     color: white;
+}
+
+.background_black {
+    background-color: black
 }
 
 .center {

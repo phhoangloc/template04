@@ -107,6 +107,7 @@ const SingleWatch = ({ archive, id }: Props) => {
     const getItem = async (a: string, s: string) => {
         if (id !== "new_") {
             const result = await AdminAuthen.getItemDetail(a, s)
+
             if (result.success) {
                 setCurrentSlug(result.data[0].slug)
                 setName(result.data[0].name)
@@ -147,9 +148,9 @@ const SingleWatch = ({ archive, id }: Props) => {
             imgs.length ?
                 imgs.reverse().map((img: any, index: number) =>
                     <div className="imgItem" key={index}>
-                        {img.indexOf("data:image/jpeg") !== -1 ?
-                            <Image key={index} src={img} width={100} height={100} alt='fromgg' priority={true} /> :
-                            <Image key={index} src={process.env.google_url + img} width={100} height={100} alt='fromgg' priority={true} />}
+                        {img instanceof Object !== true && img.indexOf("data:image/jpeg") !== -1 ?
+                            <Image key={index} src={img} width={500} height={500} alt='fromgg' priority={true} /> :
+                            <Image key={index} src={process.env.google_url + img.name} width={500} height={500} alt='fromgg' priority={true} />}
                         <CloseIcon onClick={() => getIndexImg(index)} />
                     </div>) :
                 []
@@ -159,6 +160,7 @@ const SingleWatch = ({ archive, id }: Props) => {
     useEffect(() => {
         preImg(imgPres)
     }, [imgPres])
+
 
     return (
         <div className={`main ${currentMenu ? "main_while_menu_open" : ""}`}>

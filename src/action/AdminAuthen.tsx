@@ -40,7 +40,6 @@ const uploadFile = async (file: File) => {
     })
     return fileUpload.data
 }
-
 const getPic = async (u: string) => {
     const result = await axios.get(process.env.server_url + "admin/pic?username=" + u,
         {
@@ -52,7 +51,6 @@ const getPic = async (u: string) => {
     )
     return result.data
 }
-
 const deletePic = async (name: string, id: string) => {
     const result = await axios.delete(process.env.server_url + `admin/pic?name=${name}&id=${id}`,
         {

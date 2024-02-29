@@ -5,7 +5,7 @@
 }
 
 .admin::-webkit-scrollbar {
-    width: 5px;
+    display: none;
 }
 
 .admin::-webkit-scrollbar-thumb {
@@ -187,6 +187,7 @@
 
                 .icon {
                     margin: 0;
+                    position: inherit;
                 }
             }
 
