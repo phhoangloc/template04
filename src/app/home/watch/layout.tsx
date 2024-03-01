@@ -1,6 +1,7 @@
 import Header from '@/component/home/watch/header'
 import React from 'react'
 import { Metadata } from 'next'
+import CartModal from '@/component/home/watch/cartModal'
 export const metadata: Metadata = {
     title: {
         template: '%s | Watch',
@@ -17,6 +18,7 @@ const layout = ({ children }: Props) => {
         <div className='home'>
             <div className=' watch'>
                 <Header />
+                <CartModal />
                 {children}
             </div>
         </div>

@@ -37,7 +37,8 @@ const Provider = ({ children }: Props) => {
             const background = result.data.background
             const position = result.data.position
             const pic = result.data.pic
-            store.dispatch(setUser({ _id, username, email, avata, background, position, pic }))
+            const carts = result.data.carts
+            store.dispatch(setUser({ _id, username, email, avata, background, position, pic, carts }))
         }
         setLoading(false)
     }

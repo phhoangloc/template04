@@ -77,7 +77,7 @@ const Home = () => {
                     null}
             <Clock />
             <App />
-            {/* <UploadButton icon={<InsertPhotoOutlinedIcon />} func={(e) => getFile(e)} /> */}
+            <UploadButton icon={<InsertPhotoOutlinedIcon />} func={(e) => getFile(e)} />
 
         </div>
     )

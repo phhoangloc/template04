@@ -10,6 +10,7 @@ export type UserLoginType = {
     email: string,
     position: string,
     pic: []
+    carts: []
 }
 
 const UserReducer = createSlice({

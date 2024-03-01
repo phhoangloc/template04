@@ -246,6 +246,10 @@
   margin: 0;
 }
 
+html {
+  background-color: #444;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -253,6 +257,11 @@ a {
 
 div {
   box-sizing: border-box;
+}
+
+body {
+  max-width: 1600px;
+  margin: auto;
 }
 
 body::-webkit-scrollbar {
@@ -316,8 +325,8 @@ body::-webkit-scrollbar {
 }
 
 .provider .notice_open {
-  top: 50px;
-  z-index: 9;
+  top: 0px;
+  z-index: 15;
 }
 
 .provider .notice_success_true {
@@ -336,7 +345,7 @@ body::-webkit-scrollbar {
   padding: 5px 0;
   position: fixed;
   top: -150px;
-  z-index: 9;
+  z-index: 15;
   box-shadow: var(--box-shadow);
   transition: all 0.5s;
 }
@@ -356,5 +365,5 @@ body::-webkit-scrollbar {
 }
 
 .provider .alert_open {
-  top: 50px;
+  top: 0px;
 }

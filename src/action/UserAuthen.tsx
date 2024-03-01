@@ -30,8 +30,19 @@ const uploadFile = async (file: File) => {
     return fileUpload.data
 }
 
+const createCart = async (body: any) => {
+    const result = await axios.post(process.env.server_url + "myuser/cart", body, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.token,
+        },
+    })
+    return result.data
+}
+
 export const UserAuthen = {
     checkLogin,
     update,
-    uploadFile
+    uploadFile,
+    createCart,
 }

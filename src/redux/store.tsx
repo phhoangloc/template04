@@ -13,7 +13,7 @@ const store = configureStore({
         menu: MenuReducer.reducer,
         refresh: RefreshReducer.reducer,
         alert: AlertReducer.reducer,
-        notice: NoticeReducer.reducer
+        notice: NoticeReducer.reducer,
     }
 })
 

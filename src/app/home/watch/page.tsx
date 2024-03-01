@@ -5,6 +5,7 @@ import { NoUserAuthen } from '@/action/NoUserAuthen'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import Button from '@/component/asset/button'
+import Card from '@/component/asset/card'
 const Watch = () => {
     const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
 
@@ -17,7 +18,7 @@ const Watch = () => {
     const [watchs, setWatch] = useState<any>()
 
     const getWatch = async (genre: string) => {
-        const result = await NoUserAuthen.getItem(genre, "")
+        const result = await NoUserAuthen.getItem(genre, "", "")
         if (result.success) {
             setWatch(result.data)
         } else {
@@ -40,7 +41,7 @@ const Watch = () => {
                         Bạn cần một thứ gì đó làm cho bạn mới vẻ và cuốn hút.<br></br>
                         Có thể những thứ bạn đang cần là một chiếc đồng hồ mới để nâng tầm bản thân!
                     </h4>
-                    <Button name='view watch' onClick={() => toPage.push("/home/watch/genre")}></Button>
+                    <Button name='view watch' onClick={() => toPage.push("/home/watch/brand")}></Button>
                 </div>
                 <div className="image">
                     <Image src={"/img/cover.png"} width={1000} height={1000} alt='cover' />
@@ -85,23 +86,20 @@ const Watch = () => {
             </div>
             <div className="watch_home_items">
                 <h2>Đồng Hồ Nam</h2>
-                <p className='slogan'>Thời gian không bao giờ trôi qua mà không để lại dấu vết. <br></br>
-                    Khám phá và tạo dấu ấn cho cuộc sống của bạn cùng chúng tôi!</p>
+                <p className='slogan'>
+                    Thời gian không bao giờ trôi qua mà không để lại dấu vết. <br></br>
+                    Khám phá và tạo dấu ấn cho cuộc sống của bạn cùng chúng tôi!
+                </p>
                 <div className="items grid_box">
-                    {
-                        watchs && watchs.length ?
-                            watchs.map((watch: any, index: number) =>
-                                <div className={` item xs6 sm4 md3 lg2 `} key={index}>
-                                    <div className="pic">
-                                        <Image src={process.env.google_url + watch?.img?.[watch.img?.length - 1]?.name} fill sizes='100' alt='item' />
-                                    </div>
-                                    <div className="title">
-                                        <p className='price'>{Number(watch.price).toLocaleString('en-US')} VND</p>
-                                        <p className='name'>{watch.name}</p>
-                                    </div>
-                                </div>)
-                            : null
-                    }
+                    {watchs && watchs.length ?
+                        watchs.map((watch: any, index: number) =>
+                            <div className={` item xs6 sm6 md4 lg3 `} key={index} onClick={() => toPage.push("watch/" + watch.brand + "/" + watch.slug)}>
+                                <Card type='column'
+                                    img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
+                                    title={watch?.name}
+                                    sub={Number(watch.price).toLocaleString('en-US') + "VND"} />
+                            </div>)
+                        : null}
                 </div>
             </div>
         </div>

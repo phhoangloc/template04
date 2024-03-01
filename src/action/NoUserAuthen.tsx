@@ -4,8 +4,8 @@ const login = async (body: { username: string, password: string }) => {
     return result.data
 }
 
-const getItem = async (genre: string, slug: string) => {
-    const result = await axios.get(process.env.server_url + genre + "?slug=" + slug)
+const getItem = async (genre: string, brand: string, slug: string) => {
+    const result = await axios.get(process.env.server_url + genre + "?brand=" + brand + "&slug=" + slug)
     return result.data
 
 }

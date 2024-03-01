@@ -9,13 +9,16 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { setTheme } from '@/redux/reducer/ThemeReduce'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { setMenu } from '@/redux/reducer/MenuReduce'
 const Header = () => {
     const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
+    const [currentMenu, setCurrentMenu] = useState<boolean>(store.getState().menu)
     const [currentUser, setCurrentUser] = useState<UserLoginType>(store.getState().user)
 
     const update = () => {
         store.subscribe(() => setCurrentTheme(store.getState().theme))
         store.subscribe(() => setCurrentUser(store.getState().user))
+        store.subscribe(() => setCurrentMenu(store.getState().menu))
     }
 
     update()
@@ -29,7 +32,7 @@ const Header = () => {
                         <Icon icon={<DarkModeIcon />} onClick={() => store.dispatch(setTheme(false))} size={30} /> :
                         <Icon icon={<LightModeIcon />} onClick={() => store.dispatch(setTheme(true))} size={30} />
                     }
-                    <Icon icon={<ShoppingCartIcon />} />
+                    <Icon icon={<ShoppingCartIcon />} onClick={() => store.dispatch(setMenu(true))} />
                 </div>
             </div>
         </div>
