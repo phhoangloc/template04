@@ -170,11 +170,10 @@
 
 .card .info .title {
   font-weight: bold;
-  font-size: calc(10px + 0.5vw);
 }
 
 .card .info .sub {
-  font-size: calc(10px + 0.3vw);
+  font-size: 0.85rem;
 }
 
 .grid_row {

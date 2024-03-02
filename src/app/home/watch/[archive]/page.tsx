@@ -5,6 +5,7 @@ import { NoUserAuthen } from '@/action/NoUserAuthen'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import NotFound from '@/app/not-found'
+import Card from '@/component/asset/card'
 type Props = {
     params: { archive: string }
 }
@@ -37,14 +38,11 @@ const Sign = ({ params }: Props) => {
                         Khám phá và tạo dấu ấn cho cuộc sống của bạn cùng chúng tôi!</p>
                     <div className="items grid_box">
                         {watchs.map((watch: any, index: number) =>
-                            <div className={` item xs6 sm4 md3 lg2 `} key={index} onClick={() => toPage.push("/home/watch/" + watch.brand + "/" + watch.slug)}>
-                                <div className="pic">
-                                    <Image src={process.env.google_url + watch?.img?.[watch.img?.length - 1]?.name} fill sizes='100' alt='item' />
-                                </div>
-                                <div className="title">
-                                    <p className='price'>{Number(watch.price).toLocaleString('en-US')} VND</p>
-                                    <p className='name'>{watch.name}</p>
-                                </div>
+                            <div className={` item xs12 sm6 md4 lg3 `} key={index} onClick={() => toPage.push("/home/watch/" + watch.brand + "/" + watch.slug)}>
+                                <Card type='column'
+                                    img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
+                                    title={watch?.name}
+                                    sub={Number(watch.price).toLocaleString('en-US') + "VND"} />
                             </div>)}
                     </div>
                 </div>

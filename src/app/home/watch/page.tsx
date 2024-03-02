@@ -34,7 +34,7 @@ const Watch = () => {
 
     return (
         <div className={`watch_body`}>
-            <div className={`cover center ${currentTheme ? "background_white" : "background_black"}`}>
+            <div className={`cover center ${currentTheme ? "background_light" : "background_dark"}`}>
                 <div className="detail center">
                     <h4>
                         Bạn cảm thấy thiếu tự tin. <br></br>
@@ -47,9 +47,8 @@ const Watch = () => {
                     <Image src={"/img/cover.png"} width={1000} height={1000} alt='cover' />
                 </div>
             </div>
-            <div className="reason">
-                <h2>Tại sao bạn cần một chiếc đồng hộ đeo tay đẳng cấp?</h2>
-                <div className="the_reason center" style={{ backgroundImage: "url('/img/reason1.jpg')" }}>
+            <div className={"reason grid_box"}>
+                <div className="the_reason center sx12 md6" style={{ backgroundImage: "url('/img/reason1.jpg')" }}>
                     <h3>Quản lý thời gian</h3>
                     <p>
                         Thử tưởng tượng trên tay bạn là một chiếc đồng hồ đẳng cấp!<br></br>
@@ -57,7 +56,7 @@ const Watch = () => {
                         Vì không ai đeo một chiếc đồng hồ đẳng cấp lại đi muộn cả!
                     </p>
                 </div>
-                <div className="the_reason center" style={{ backgroundImage: "url('/img/reason2.jpg')" }} >
+                <div className="the_reason center sx12 md6" style={{ backgroundImage: "url('/img/reason2.jpg')" }} >
                     <h3>Phong cách cá nhân</h3>
                     <p>
                         Thử tưởng tượng trên tay bạn là một chiếc đồng hồ đẳng cấp!<br></br>
@@ -65,7 +64,7 @@ const Watch = () => {
                         Vậy nên để phù hợp với bạn chiếc đồng hồ có giá trị sẽ nâng tầm phong cách của bạn!
                     </p>
                 </div>
-                <div className="the_reason center" style={{ backgroundImage: "url('/img/reason3.jpg')" }} >
+                <div className="the_reason center sx12 md6" style={{ backgroundImage: "url('/img/reason3.jpg')" }} >
                     <h3>Tăng cường sức khỏe</h3>
                     <p>
                         Thử tưởng tượng trên tay bạn là một chiếc đồng hồ đẳng cấp!<br></br>
@@ -74,7 +73,7 @@ const Watch = () => {
                         Chắc chắn bạn sẽ phải đi đến một nơi có nhiều sự vận động để tăng cường sức khỏe.
                     </p>
                 </div>
-                <div className="the_reason center" style={{ backgroundImage: "url('/img/reason4.jpg')" }} >
+                <div className="the_reason center sx12 md6" style={{ backgroundImage: "url('/img/reason4.jpg')" }} >
                     <h3>Thể hiện đẳng cấp</h3>
                     <p>
                         Đồng hồ đeo tay cao cấp còn là biểu tượng của đẳng cấp và sự thành công.<br></br>
@@ -93,7 +92,7 @@ const Watch = () => {
                 <div className="items grid_box">
                     {watchs && watchs.length ?
                         watchs.map((watch: any, index: number) =>
-                            <div className={` item xs6 sm6 md4 lg3 `} key={index} onClick={() => toPage.push("watch/" + watch.brand + "/" + watch.slug)}>
+                            <div className={` item xs12 sm6 md4 lg3 `} key={index} onClick={() => toPage.push("watch/" + watch.brand + "/" + watch.slug)}>
                                 <Card type='column'
                                     img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
                                     title={watch?.name}
