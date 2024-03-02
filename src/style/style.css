@@ -1,10 +1,10 @@
 :root {
   --main: #0066cc;
   --light: #e6f2ff;
-  --dark: #000d1a;
+  --dark: #001a33;
   --background-light: #fff;
-  --background-dark: #001a33;
-  --box-shadow: 0px 5px 40px -20px black;
+  --background-dark: #00264d;
+  --box-shadow: 0px 10px 15px -10px black;
   --border: 2px solid rgba(136, 136, 136, 0.2);
 }
 
@@ -246,10 +246,6 @@
   margin: 0;
 }
 
-html {
-  background-color: #444;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -257,11 +253,6 @@ a {
 
 div {
   box-sizing: border-box;
-}
-
-body {
-  max-width: 1600px;
-  margin: auto;
 }
 
 body::-webkit-scrollbar {

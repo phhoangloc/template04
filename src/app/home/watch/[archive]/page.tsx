@@ -6,11 +6,20 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import NotFound from '@/app/not-found'
 import Card from '@/component/asset/card'
+import store from '@/redux/store'
 type Props = {
     params: { archive: string }
 }
 
 const Sign = ({ params }: Props) => {
+    const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
+
+    const update = () => {
+        store.subscribe(() => setCurrentTheme(store.getState().theme))
+    }
+
+    update()
+
 
     const [watchs, setWatch] = useState<any>()
 
@@ -32,7 +41,7 @@ const Sign = ({ params }: Props) => {
     if (watchs && watchs.length) {
         return (
             <div className='watch_body'>
-                <div className="watch_home_items">
+                <div className={`watch_home_items ${currentTheme ? "background_light" : "background_dark"}`}>
                     <h2>Đồng Hồ Nam</h2>
                     <p className='slogan'>Thời gian không bao giờ trôi qua mà không để lại dấu vết. <br></br>
                         Khám phá và tạo dấu ấn cho cuộc sống của bạn cùng chúng tôi!</p>
