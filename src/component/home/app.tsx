@@ -36,7 +36,7 @@ const App = () => {
             {
                 apps.map((item: any, index: number) =>
                     <div className={`app xs4 sm3 md2 `} key={index} onClick={() => toPage.push(item.link)}>
-                        <Card type='column' img={item.icon} />
+                        <Card img={item.icon} />
                     </div>
                 )}
         </div>
