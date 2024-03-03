@@ -4,7 +4,7 @@
   --dark: #001a33;
   --background-light: #fff;
   --background-dark: #00264d;
-  --box-shadow: 0px 10px 15px -10px black;
+  --box-shadow: 0px 5px 15px -10px black;
   --border: 2px solid rgba(136, 136, 136, 0.2);
 }
 
@@ -24,6 +24,10 @@
   margin: 0;
 }
 
+.xs2 {
+  width: calc(16.6% - 20px);
+}
+
 .xs3 {
   width: calc(25% - 20px);
 }
@@ -34,6 +38,10 @@
 
 .xs6 {
   width: calc(50% - 20px);
+}
+
+.xs8 {
+  width: calc(66.6% - 20px);
 }
 
 .xs9 {

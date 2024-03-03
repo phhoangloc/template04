@@ -25,7 +25,9 @@ const Card = ({ type, img, title, sub }: Props) => {
         case "row":
             return (
                 <div className='card grid_row'>
-                    <Image src={img} width={500} height={500} alt="icon" />
+                    <div className="image center">
+                        <Image src={img} width={500} height={500} alt="icon" />
+                    </div>
                     <div className="info center">
                         <p className='title'>{title}</p>
                         {sub ? <p className='sub'>{sub}</p> : null}

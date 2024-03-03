@@ -7,6 +7,10 @@ import { useRouter } from 'next/navigation'
 import NotFound from '@/app/not-found'
 import Card from '@/component/asset/card'
 import store from '@/redux/store'
+import Loading from '@/app/loading'
+import Input from '@/component/asset/input'
+import SearchIcon from '@mui/icons-material/Search';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 type Props = {
     params: { archive: string }
 }
@@ -20,15 +24,17 @@ const Sign = ({ params }: Props) => {
 
     update()
 
-
+    const [loading, setLoading] = useState<boolean>(true)
     const [watchs, setWatch] = useState<any>()
 
     const getWatch = async (genre: string, brand: string) => {
         const result = await NoUserAuthen.getItem(genre, brand.toLocaleUpperCase(), "")
         if (result.success) {
             setWatch(result.data)
+            setLoading(false)
         } else {
             setWatch(undefined)
+            setLoading(false)
         }
     }
 
@@ -38,29 +44,31 @@ const Sign = ({ params }: Props) => {
 
     const toPage = useRouter()
 
+    const [search, setSearch] = useState<string>("")
     if (watchs && watchs.length) {
         return (
             <div className='watch_body'>
                 <div className={`watch_home_items ${currentTheme ? "background_light" : "background_dark"}`}>
-                    <h2>Đồng Hồ Nam</h2>
-                    <p className='slogan'>Thời gian không bao giờ trôi qua mà không để lại dấu vết. <br></br>
-                        Khám phá và tạo dấu ấn cho cuộc sống của bạn cùng chúng tôi!</p>
-                    <div className="items grid_box">
-                        {watchs.map((watch: any, index: number) =>
-                            <div className={` item xs12 sm6 md4 lg3 `} key={index} onClick={() => toPage.push("/home/watch/" + watch.brand + "/" + watch.slug)}>
-                                <Card type='column'
-                                    img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
-                                    title={watch?.name}
-                                    sub={Number(watch.price).toLocaleString('en-US') + "VND"} />
-                            </div>)}
+                    <div className={`tool_archive ${currentTheme ? "background_light" : "background_dark"}`}>
+                        <Input name={<SearchIcon />} value={search} onChange={(e) => setSearch(e)} />
                     </div>
+                    {watchs.map((watch: any, index: number) =>
+                        <div className="item" key={index} onClick={() => toPage.push("/home/watch/" + watch.brand + "/" + watch.slug)}>
+                            <Card type='row'
+                                img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
+                                title={watch?.name}
+                                sub={Number(watch.price).toLocaleString('en-US') + "VND"} />
+                            <div className='addCart'><AddShoppingCartIcon /> <h4>Add cart</h4></div>
+                        </div>
+                    )}
                 </div>
             </div>
+
         )
 
     }
 
-    return <NotFound />
+    return loading ? <Loading /> : <NotFound />
 }
 
 export default Sign

@@ -246,6 +246,15 @@
                 margin: 0 auto 50px;
             }
 
+            .tool_archive {
+                max-width: 992px;
+                margin: auto;
+
+                .input {
+                    max-width: 375px;
+                }
+            }
+
             .items {
                 width: 100%;
                 margin: auto;
@@ -254,6 +263,26 @@
                     margin: 10px;
                     cursor: pointer;
                     border: var(--border);
+                }
+            }
+
+            .item {
+                max-width: 992px;
+                margin: 5px auto;
+                border: var(--border);
+                cursor: pointer;
+                position: relative;
+
+                .addCart {
+                    padding: 5px 10px;
+                    position: absolute;
+                    display: flex;
+                    bottom: 5px;
+                    right: 5px;
+                    background-color: var(--main);
+                    color: white;
+
+                    h4 {}
                 }
             }
 
@@ -278,8 +307,11 @@
                 }
 
                 .show {
+                    width: 80%;
+                    max-width: 375px;
                     height: 80%;
                     text-align: center;
+                    overflow: hidden;
 
                     img {
                         width: 100%;
@@ -292,14 +324,15 @@
                     width: 100%;
                     overflow: scroll;
                     display: flex;
+                    padding-top: 5px;
 
                     .circle {
                         height: 90%;
                         width: auto;
                         margin: 0 5px;
-                        box-shadow: 1px 5px 15px -5px #888;
                         transition: all 0.5s;
                         cursor: pointer;
+                        border: var(--border);
 
                         img {
                             height: 100%;
@@ -363,12 +396,13 @@
 
                     p {
                         margin-bottom: 0px !important;
+                        text-align: justify;
 
                         span {
                             font-family: '__Roboto_Mono_c9cbed' !important;
                             color: inherit !important;
                             line-height: 1.5;
-
+                            white-space: pre-line !important;
                         }
                     }
                 }

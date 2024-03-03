@@ -5,7 +5,7 @@ import CartModal from '@/component/home/watch/cartModal'
 export const metadata: Metadata = {
     title: {
         template: '%s | Watch',
-        default: 'Watch', // a default is required when creating a template
+        default: 'Watch',
     },
 }
 
