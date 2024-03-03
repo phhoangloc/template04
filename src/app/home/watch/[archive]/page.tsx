@@ -11,6 +11,7 @@ import Loading from '@/app/loading'
 import Input from '@/component/asset/input'
 import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import CardRow from '@/component/asset/cardRow'
 type Props = {
     params: { archive: string }
 }
@@ -54,11 +55,10 @@ const Sign = ({ params }: Props) => {
                     </div>
                     {watchs.map((watch: any, index: number) =>
                         <div className="item" key={index} onClick={() => toPage.push("/home/watch/" + watch.brand + "/" + watch.slug)}>
-                            <Card type='row'
+                            <CardRow addcart={true}
                                 img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
                                 title={watch?.name}
                                 sub={Number(watch.price).toLocaleString('en-US') + "VND"} />
-                            <div className='addCart'><AddShoppingCartIcon /> <h4>Add cart</h4></div>
                         </div>
                     )}
                 </div>

@@ -93,7 +93,7 @@ const Watch = () => {
                     {watchs && watchs.length ?
                         watchs.map((watch: any, index: number) =>
                             <div className={` item xs12 sm6 md4 lg3 `} key={index} onClick={() => toPage.push("watch/" + watch.brand + "/" + watch.slug)}>
-                                <Card type='column'
+                                <Card addcart={true}
                                     img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
                                     title={watch?.name}
                                     sub={Number(watch.price).toLocaleString('en-US') + "VND"} />

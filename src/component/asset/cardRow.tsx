@@ -13,13 +13,13 @@ type Props = {
     addfavour?: boolean
 }
 
-const Card = ({ img, title, sub, specifications, addcart }: Props) => {
+const CardRow = ({ img, title, sub, specifications, addcart }: Props) => {
     return (
         <div className='card grid_box' >
-            <div className='image xs12'>
+            <div className='image xs12 sm5 md3 '>
                 <Image src={img} width={500} height={500} alt="icon" />
             </div>
-            <div className="info xs12">
+            <div className="info xs12 sm7 md9">
                 {title ? <p className='title'>{title}</p> : null}
                 {sub ? <p className='sub'>{sub}</p> : null}
                 {specifications ?
@@ -39,4 +39,4 @@ const Card = ({ img, title, sub, specifications, addcart }: Props) => {
     )
 }
 
-export default Card
+export default CardRow

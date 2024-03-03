@@ -71,7 +71,7 @@ const Sign = ({ params }: Props) => {
                         )}
                     </div>
                 </div>
-                <div className="home_item_main_right xs12 md6" id="detail">
+                <div className={`home_item_main_right xs12 md6 `} id="detail">
                     <h3>{watch?.name}</h3>
                     <table className='table'>
                         <tbody>
