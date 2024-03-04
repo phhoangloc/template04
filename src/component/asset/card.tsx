@@ -20,20 +20,26 @@ const Card = ({ img, title, sub, specifications, addcart }: Props) => {
                 <Image src={img} width={500} height={500} alt="icon" />
             </div>
             <div className="info xs12">
-                {title ? <p className='title'>{title}</p> : null}
-                {sub ? <p className='sub'>{sub}</p> : null}
-                {specifications ?
-                    <ul>
-                        <li>aaaa</li>
-                        <li>aaaa</li>
-                        <li>aaaa</li>
-                        <li>aaaa</li>
-                    </ul> :
-                    null}
-                {addcart ? <div className="addcartButton center">
-                    <AddShoppingCartIcon />
-                    <p>Add Cart</p>
-                </div> : null}
+                <div className="text">
+                    {title ? <p className='title'>{title}</p> : null}
+                    {sub ? <p className='sub'>{sub}</p> : null}
+                    {specifications ?
+                        <ul>
+                            <li>aaaa</li>
+                            <li>aaaa</li>
+                            <li>aaaa</li>
+                            <li>aaaa</li>
+                        </ul> :
+                        null}
+                </div>
+                <div className="button">
+                    {addcart ?
+                        <div className="addcartButton center">
+                            <AddShoppingCartIcon />
+                            <p>Add Cart</p>
+                        </div> :
+                        null}
+                </div>
             </div>
         </div>
     )

@@ -176,6 +176,16 @@
             border-radius: 10px;
             position: relative;
 
+            .flexbox {
+                display: flex;
+
+                .input {
+                    width: 45%;
+                    margin: 0 2.5%;
+                }
+
+            }
+
             .title {
                 display: flex;
 
@@ -411,6 +421,36 @@
             height: 175px;
         }
 
+        .item_test {
+            display: flex;
+
+            .input {
+                width: 40%;
+                margin: auto;
+            }
+
+            .button {
+                width: 10%;
+                margin: auto;
+
+                button {
+                    width: 100%;
+                }
+            }
+
+            .tool {
+                width: max-content;
+                margin: auto auto 0 auto;
+
+                svg {
+                    width: 25px;
+                    height: 25px;
+                    margin: 0 5px;
+                    cursor: pointer;
+                }
+            }
+
+        }
     }
 
     .main_while_menu_open {

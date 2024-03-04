@@ -56,6 +56,7 @@ const Sign = ({ params }: Props) => {
                     {watchs.map((watch: any, index: number) =>
                         <div className="item" key={index} onClick={() => toPage.push("/home/watch/" + watch.brand + "/" + watch.slug)}>
                             <CardRow addcart={true}
+                                specifications={["aaa"]}
                                 img={process.env.google_url + watch?.img?.[watch?.img?.length - 1].name}
                                 title={watch?.name}
                                 sub={Number(watch.price).toLocaleString('en-US') + "VND"} />

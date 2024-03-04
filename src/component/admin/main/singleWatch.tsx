@@ -14,6 +14,8 @@ import Image from 'next/image'
 import store from '@/redux/store'
 import Icon from '@/component/asset/icon'
 import { AdminAuthen } from '@/action/AdminAuthen'
+import AddIcon from '@mui/icons-material/Add';
+import Properties from '@/component/asset/properties'
 type Props = {
     archive: string,
     id: string
@@ -34,6 +36,7 @@ const SingleWatch = ({ archive, id }: Props) => {
     const [brand, setBrand] = useState<string>("")
     const [price, setPrice] = useState<string>("")
     const [detail, setDetail] = useState<string>("")
+    const [specifications, setSpecifications] = useState<[]>([])
     const [detailIn, setDetailIn] = useState<string>("")
 
 
@@ -75,11 +78,13 @@ const SingleWatch = ({ archive, id }: Props) => {
             name: data.name,
             brand: data.brand,
             price: data.price,
+            specifications: data.specifications,
             detail: data.detail,
         }
 
-        if (id !== "new_") {
+        console.log(body)
 
+        if (id !== "new_") {
             const result = await axios.put(process.env.server_url + `admin/${archive}?id=${id}`, body, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -103,17 +108,16 @@ const SingleWatch = ({ archive, id }: Props) => {
 
     }
 
-
     const getItem = async (a: string, s: string) => {
         if (id !== "new_") {
             const result = await AdminAuthen.getItemDetail(a, s)
-
             if (result.success) {
                 setCurrentSlug(result.data[0].slug)
                 setName(result.data[0].name)
                 setBrand(result.data[0].brand)
                 setPrice(result.data[0].price)
                 setDetail(result.data[0].detail)
+                setSpecifications(result.data[0].specifications)
                 setImgPres(result.data[0].img)
                 setImgNames(result.data[0].img)
             }
@@ -161,6 +165,7 @@ const SingleWatch = ({ archive, id }: Props) => {
         preImg(imgPres)
     }, [imgPres])
 
+    console.log(specifications)
 
     return (
         <div className={`main ${currentMenu ? "main_while_menu_open" : ""}`}>
@@ -181,10 +186,16 @@ const SingleWatch = ({ archive, id }: Props) => {
                 <div className="viewImg">{viewImg}</div>
             </div>
             <div className={`property ${currentTheme ? "background_light" : "background_dark"}`}>
+                <p>specifications</p>
+                <Properties
+                    data={specifications}
+                    func={(data) => setSpecifications(data)}
+                />
+            </div>
+            <div className={`property ${currentTheme ? "background_light" : "background_dark"}`}>
                 <TextArea name="detail" value={detail} onChange={v => setDetail(v)} />
             </div>
-
-            <Button name={id === "new_" ? "create" : "save"} onClick={() => save({ slug: currentslug, name, brand, price, detail: detail || detailIn }, id, imgNames)} />
+            <Button name={id === "new_" ? "create" : "save"} onClick={() => save({ slug: currentslug, name, brand, price, detail: detail || detailIn, specifications }, id, imgNames)} />
 
         </div>
     )

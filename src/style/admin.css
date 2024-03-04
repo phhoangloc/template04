@@ -178,6 +178,15 @@
   position: relative;
 }
 
+.body .main .property .flexbox {
+  display: flex;
+}
+
+.body .main .property .flexbox .input {
+  width: 45%;
+  margin: 0 2.5%;
+}
+
 .body .main .property .title {
   display: flex;
 }
@@ -403,6 +412,36 @@
 
 .body .main .pictureModal_open {
   height: 175px;
+}
+
+.body .main .item_test {
+  display: flex;
+}
+
+.body .main .item_test .input {
+  width: 40%;
+  margin: auto;
+}
+
+.body .main .item_test .button {
+  width: 10%;
+  margin: auto;
+}
+
+.body .main .item_test .button button {
+  width: 100%;
+}
+
+.body .main .item_test .tool {
+  width: max-content;
+  margin: auto auto 0 auto;
+}
+
+.body .main .item_test .tool svg {
+  width: 25px;
+  height: 25px;
+  margin: 0 5px;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

@@ -170,17 +170,48 @@
   position: relative;
 }
 
-.card .info .title {
-  font-weight: bold;
+.card .info .text {
+  margin: 0;
 }
 
-.card .info .sub {
+.card .info .text .title {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card .info .text .sub {
   font-size: 0.85rem;
 }
 
-.card .info ul {
-  padding-left: 5%;
+.card .info .text ul {
+  padding-left: 7.5%;
   margin-top: 5px;
+  min-width: 100%;
+  overflow: hidden;
+}
+
+.card .info .text ul li {
+  height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card .info .text .specifications {
+  height: 100px;
+}
+
+.card .info .button {
+  margin: 5px auto 0 0;
+  height: max-content;
+}
+
+@media (min-width: 768px) {
+  .card .info .button {
+    margin: auto auto 0 auto;
+  }
 }
 
 .card .info .addcartButton {
@@ -189,19 +220,16 @@
   text-align: center;
   background-color: var(--main);
   color: white;
-  padding: 5px 10px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  padding: 5px;
 }
 
 .card .info .addcartButton svg {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
 }
 
 .card .info .addcartButton p {
   width: 100%;
-  line-height: 25px;
-  font-size: 0.9rem;
+  line-height: 20px;
+  font-size: 0.75rem;
 }
