@@ -1,29 +1,21 @@
-import Header from '@/component/admin/header'
-import Narbar from '@/component/admin/narbar'
-import '../../style/admin.css'
+import NaviProfile from '@/component/asset/naviProfile'
+import LayoutRow from '@/component/layout/layoutRow'
 import React from 'react'
 
-export const metadata = {
-    title: {
-        template: '%s | Admin',
-        default: 'Admin'
-    },
-}
-
 type Props = {
-    children: React.ReactNode,
+    children: React.ReactNode
 }
 
-const Layout = ({ children }: Props) => {
+const layout = ({ children }: Props) => {
     return (
-        <div className='admin'>
-            <Header />
-            <div className="body">
-                <Narbar />
-                {children}
-            </div>
-        </div>
+        <LayoutRow
+            naviLef={
+                <NaviProfile />
+            }
+            naviLeftWitdh='200px'>
+            {children}
+        </LayoutRow>
     )
 }
 
-export default Layout
+export default layout

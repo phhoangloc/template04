@@ -2,7 +2,9 @@ import React from 'react'
 
 const Loading = () => {
     return (
-        <div className='loading'>Loading...</div>
+        <div className='min-height-100vh display-flex flex-direction-column justify-content-center text-align-center'>
+            Loading...
+        </div>
     )
 }
 

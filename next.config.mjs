@@ -1,24 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     images: {
-        remotePatterns: [
-            {
-                protocol: 'http',
-                hostname: 'localhost',
-                port: "4000"
-            },
-            {
-                protocol: 'https',
-                hostname: 'drive.google.com',
-                port: '',
-            },
-        ],
+        loader: 'custom',
+        loaderFile: './img-loader.ts',
     },
-
     env: {
-        server_url_: "http://localhost:4000/",
-        server_url: "https://be-mywatch.vercel.app/",
-        google_url: "https://drive.google.com/uc?id="
+        server_url_: "https://locpham.blog:4000/",
+        server_url: "http://localhost:4000/",
     }
 };
 

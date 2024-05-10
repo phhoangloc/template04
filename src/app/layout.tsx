@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Roboto_Mono } from "next/font/google";
-import '../style/style.css'
+import { Roboto_Mono, Ubuntu, Ubuntu_Condensed, Ubuntu_Mono } from "next/font/google";
+import "../style/global.css"
 import Provider from "@/redux/component/provider";
-const RobotoMono = Roboto_Mono({ subsets: ["latin"] });
+const font = Roboto_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Locand",
+  title: "Locpham",
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={RobotoMono.className}>
+      <body className={font.className}>
         <Provider>
           {children}
         </Provider>

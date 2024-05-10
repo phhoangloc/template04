@@ -1,16 +1,82 @@
 'use client'
-import LightModeIcon from '@mui/icons-material/LightMode';
+import React, { useState, useEffect } from 'react'
+import Clock from '@/component/asset/clock';
+import LayoutRow from '@/component/layout/layoutRow';
+import NaviLeft from '@/component/asset/naviLeft';
 import store from '@/redux/store';
-import { setTheme } from '@/redux/reducer/ThemeReduce';
-import { useState } from 'react';
-import { UserLoginType } from '@/redux/reducer/UserReduce';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-export default function Home() {
 
-  const toPage = useRouter()
+import Link from 'next/link';
+import { NoUserAuthen } from '@/api/NoUserAuthen';
 
+const Page = () => {
+
+  const data = [
+    {
+      name: "app",
+      child: [
+        { name: "blog", link: "/blog" },
+      ]
+    },
+    {
+      name: "pages",
+      child: [
+        { name: "google", link: "https://www.google.com/" },
+        { name: "youtube", link: "https://www.youtube.com/" },
+        { name: "mail", link: "https://mail.google.com/" }
+
+      ]
+    },
+    {
+      name: "history search",
+    },
+  ]
+
+  const [currentUser, setCurrentUser] = useState<any>(store.getState().user)
+  const update = () => {
+    store.subscribe(() => setCurrentUser(store.getState().user))
+
+  }
   useEffect(() => {
-    toPage.push("/home")
+    update()
+  })
+
+  const naviLeftWitdh: string = "200px"
+
+
+  const [news, setNews] = useState<any[]>([])
+
+  const getNews = async (g: string, rss: string) => {
+    const result = await NoUserAuthen.getNews(g, rss)
+    setNews(result)
+  }
+  useEffect(() => {
+    getNews("rss", "https://cafebiz.vn/rss/home.rss")
   }, [])
+
+  return (
+    <LayoutRow
+      naviLeftWitdh={naviLeftWitdh}
+      naviLef={
+        <NaviLeft data={data} naviLeftWitdh='200px' />
+      }
+    >
+      <div className='width-100p height-100p display-flex flex-direction-column justify-content-center'>
+        <Clock />
+        <div className='scrollbar-none' style={{ width: "90%", margin: "0 auto", height: "300px", overflow: "auto", maxWidth: "575px", padding: "10px", boxShadow: "0px 0px 2px #888", borderRadius: "5px" }}>
+          {
+            news.map((d: any, i: number) =>
+              <div key={i} style={{ margin: "20px 0", padding: "5px" }} >
+                <Link href={d.link} target="_blank" style={{ color: "inherit", opacity: 1, textDecoration: "none" }} title={d.title}>
+                  <div dangerouslySetInnerHTML={{ __html: d.title }}
+                    style={{ width: "100%", fontWeight: "bold", fontSize: "1rem", textWrap: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} />
+                </Link>
+                <div dangerouslySetInnerHTML={{ __html: d.content }} style={{ margin: "10px 0", overflow: "hidden", opacity: "0.75", textAlign: "justify" }} />
+              </div>)
+          }
+        </div>
+      </div>
+    </LayoutRow >
+  )
 }
+
+export default Page

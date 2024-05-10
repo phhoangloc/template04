@@ -1,35 +1,25 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import LayoutRow from '@/component/layout/layoutRow'
+import React from 'react'
+import { useState, useEffect } from 'react'
 import store from '@/redux/store'
-import { UserLoginType } from '@/redux/reducer/UserReduce'
+import NaviProfile from '@/component/asset/naviProfile'
+import Button from '@/component/input/button'
 import { useRouter } from 'next/navigation'
-import Login from '@/component/login'
-type Props = {}
-
-const Dashboard = (props: Props) => {
-    const [currentMenu, setCurrentMenu] = useState<boolean>(store.getState().menu)
-    const [currentUser, setCurrentUser] = useState<UserLoginType>(store.getState().user)
-    const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
-
+const page = () => {
+    const [currentUser, setCurrentUser] = useState<any>(store.getState().user)
     const update = () => {
-        store.subscribe(() => setCurrentMenu(store.getState().menu))
         store.subscribe(() => setCurrentUser(store.getState().user))
-        store.subscribe(() => setCurrentTheme(store.getState().theme))
     }
-
-    update()
+    useEffect(() => {
+        update()
+    })
 
     const toPage = useRouter()
-    useEffect(() => {
-        if (currentUser.position === "admin") {
-            toPage.push('/admin/dashboard')
-        }
-    }, [])
 
     return (
-        <div className={`main center ${currentMenu ? "main_while_menu_open" : ""}`}><Login /></div>
+        <h1>Admin</h1>
     )
-
 }
 
-export default Dashboard
+export default page
