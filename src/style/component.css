@@ -16,3 +16,8 @@
 .hover-color-main:hover {
     color: var(--main);
 }
+
+.hover-title:hover {
+    opacity: 1 !important;
+    background-color: rgba(128, 128, 128, 0.1);
+}

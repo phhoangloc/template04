@@ -13,11 +13,11 @@ import Link from 'next/link';
 useEffect
 type Props = {
     children: React.ReactNode,
-    naviLef: React.ReactNode,
+    naviLeft: React.ReactNode,
     naviLeftWitdh: string
 }
 
-const LayoutRow = ({ children, naviLef, naviLeftWitdh }: Props) => {
+const LayoutRow = ({ children, naviLeft, naviLeftWitdh }: Props) => {
 
     const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
     const update = () => {
@@ -33,7 +33,7 @@ const LayoutRow = ({ children, naviLef, naviLeftWitdh }: Props) => {
         <div className='overflow-hidden border-radius-5' style={{ margin: "0px", height: "calc(100vh - 10px)" }}>
             <div className='display-flex height-100p position-relative width-max-content' >
                 <div className={"navi-left transition-all-05s height-100p overflow-hidden"} style={modalOpen ? { width: naviLeftWitdh } : { width: "0px" }}>
-                    {naviLef}
+                    {naviLeft}
                 </div>
                 <div className={`${currentTheme ? "light1" : "dark1"} navi-right transition-all-05s border-radius-5 box-shadow-0`} style={{ height: "calc(100% - 10px)", margin: "5px", width: modalOpen ? window.innerWidth >= 992 ? `calc(100vw  - ${naviLeftWitdh} - 20px)` : "calc(100vw - 20px)" : "calc(100vw - 20px)" }} >
                     <div style={{ height: "40px", display: "flex" }}>

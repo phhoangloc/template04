@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from 'react'
 import Clock from '@/component/asset/clock';
 import LayoutRow from '@/component/layout/layoutRow';
-import NaviLeft from '@/component/asset/naviLeft';
 import store from '@/redux/store';
-
+import Menu from '@/component/asset/menu';
 import Link from 'next/link';
 import { NoUserAuthen } from '@/api/NoUserAuthen';
 
@@ -20,14 +19,8 @@ const Page = () => {
     {
       name: "pages",
       child: [
-        { name: "google", link: "https://www.google.com/" },
-        { name: "youtube", link: "https://www.youtube.com/" },
-        { name: "mail", link: "https://mail.google.com/" }
-
+        { name: "admin", link: "/admin" },
       ]
-    },
-    {
-      name: "history search",
     },
   ]
 
@@ -56,9 +49,7 @@ const Page = () => {
   return (
     <LayoutRow
       naviLeftWitdh={naviLeftWitdh}
-      naviLef={
-        <NaviLeft data={data} naviLeftWitdh='200px' />
-      }
+      naviLeft={<Menu data={data} width={naviLeftWitdh} />}
     >
       <div className='width-100p height-100p display-flex flex-direction-column justify-content-center'>
         <Clock />
