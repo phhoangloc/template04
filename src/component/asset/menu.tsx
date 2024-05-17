@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Accordion from '../tool/accordion';
+import ItemButton from '../tool/itemButton';
 type Props = {
     data: any[],
     width: string
@@ -11,7 +12,9 @@ const Menu = ({ data, width }: Props) => {
         <div>
             {
                 data.map((item, index) =>
-                    <Accordion key={index} title={item.name} data={item.child} width={width} />
+                    item.child ?
+                        <Accordion key={index} title={item.name} data={item.child} width={width} /> :
+                        <ItemButton key={index} title={item.name} />
                 )
             }
         </div>

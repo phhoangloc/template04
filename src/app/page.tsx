@@ -17,6 +17,9 @@ const Page = () => {
       ]
     },
     {
+      name: "history",
+    },
+    {
       name: "pages",
       child: [
         { name: "admin", link: "/admin" },
