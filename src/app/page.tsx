@@ -28,8 +28,10 @@ const Page = () => {
   ]
 
   const [currentUser, setCurrentUser] = useState<any>(store.getState().user)
+  const [currentTheme, setCurrentTheme] = useState<any>(store.getState().theme)
   const update = () => {
     store.subscribe(() => setCurrentUser(store.getState().user))
+    store.subscribe(() => setCurrentTheme(store.getState().theme))
 
   }
   useEffect(() => {
@@ -54,18 +56,18 @@ const Page = () => {
       naviLeftWitdh={naviLeftWitdh}
       naviLeft={<Menu data={data} width={naviLeftWitdh} />}
     >
-      <div className='width-100p height-100p display-flex flex-direction-column justify-content-center'>
+      <div className='width-100p display-flex flex-direction-column justify-content-center' style={{ height: "calc(100vh - 60px)" }}>
         <Clock />
-        <div className='scrollbar-none' style={{ width: "90%", margin: "0 auto", height: "300px", overflow: "auto", maxWidth: "575px", padding: "10px", boxShadow: "0px 0px 2px #888", borderRadius: "5px" }}>
+        <div className={`scrollbar-5px ${currentTheme ? "light1" : "dark1"}`} style={{ width: "90%", maxWidth: "768px", margin: "0 auto", height: "300px", overflow: "auto", padding: "10px", boxShadow: "0px 0px 2px #888", borderRadius: "5px" }}>
           {
-            news.map((d: any, i: number) =>
+            news.length ? news.map((d: any, i: number) =>
               <div key={i} style={{ margin: "20px 0", padding: "5px" }} >
                 <Link href={d.link} target="_blank" style={{ color: "inherit", opacity: 1, textDecoration: "none" }} title={d.title}>
                   <div dangerouslySetInnerHTML={{ __html: d.title }}
                     style={{ width: "100%", fontWeight: "bold", fontSize: "1rem", textWrap: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }} />
                 </Link>
                 <div dangerouslySetInnerHTML={{ __html: d.content }} style={{ margin: "10px 0", overflow: "hidden", opacity: "0.75", textAlign: "justify" }} />
-              </div>)
+              </div>) : null
           }
         </div>
       </div>

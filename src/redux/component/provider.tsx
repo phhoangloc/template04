@@ -35,7 +35,7 @@ const Provider = ({ children }: Props) => {
 
 
     return (
-        <div className={`${currentTheme ? "light" : "dark"}`} style={{ padding: "5px" }}>
+        <div className={`height-100vh scrollbar-5px ${currentTheme ? "light" : "dark"}`} style={{ overflow: "auto", padding: "5px" }}>
             {children}
         </div>
 

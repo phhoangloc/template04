@@ -1,3 +1,4 @@
+'use client'
 import React, { useRef, useState } from 'react'
 import store from '@/redux/store'
 type Props = {
@@ -27,9 +28,10 @@ const Input = ({ onChange, name, value, type, onfocus, disabled }: Props) => {
         position: "relative",
         height: "50px",
         paddingBottom: "5px",
-        borderBottom: "1px solid ",
-        borderColor: "inherit",
-        overflow: "hidden"
+        borderRadius: "5px",
+        overflow: "hidden",
+        transition: "all 0.25s",
+        boxShadow: "0px 0px 2px #aaa",
     }
     const boxStyleFocus: React.CSSProperties = {
         width: "100%",
@@ -37,10 +39,11 @@ const Input = ({ onChange, name, value, type, onfocus, disabled }: Props) => {
         position: "relative",
         height: "50px",
         paddingBottom: "5px",
-        border: "2px solid ",
         borderRadius: "5px",
-        borderColor: "#0073e6",
-        overflow: "hidden"
+        overflow: "hidden",
+        transition: "all 0.25s",
+        boxShadow: "1px 1px 10px -2.5px #888",
+        transform: "translate(-1px,-1px)"
     }
     const pStyle: React.CSSProperties = {
         width: "max-content",

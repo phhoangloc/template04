@@ -14,7 +14,9 @@ const Signup = ({ archive }: Props) => {
     const update = () => {
         store.subscribe(() => setCurrentTheme(store.getState().theme))
     }
-    update()
+    useEffect(() => {
+        update()
+    })
 
     const toPage = useRouter()
     const [username, setUsername] = useState<string>("")
@@ -26,7 +28,7 @@ const Signup = ({ archive }: Props) => {
     const [Error, setErrors] = useState<{ username?: string, password?: string, email?: string }>({})
 
     useEffect(() => {
-        validateForm && validateForm();
+        validateForm();
     }, [username, password, email]);
 
     const validateForm = async () => {

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+'use client'
+import React, { useState, useEffect } from 'react'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Link from 'next/link';
+import store from '@/redux/store';
 type Props = {
     title: string
     data: any[]
@@ -9,6 +11,16 @@ type Props = {
 }
 
 const Accordion = ({ title, data, width }: Props) => {
+
+    const [currentTheme, setCurrentTheme] = useState<boolean>(store.getState().theme)
+    const [currentUser, setCurrentUser] = useState<any>(store.getState().user)
+    const update = () => {
+        store.subscribe(() => setCurrentTheme(store.getState().theme))
+        store.subscribe(() => setCurrentUser(store.getState().user))
+    }
+    useEffect(() => {
+        update()
+    })
 
     const [open, setOpen] = useState<boolean>(false)
     return (
@@ -22,10 +34,15 @@ const Accordion = ({ title, data, width }: Props) => {
             <div className='transition-all-05s overflow-hidden' style={{ height: `${open ? data.length * 35 + "px" : 0}` }}>
                 {
                     data ? data.map((item: any, index: number) =>
-                        <div className='hover-title' key={index}
-                            style={{ height: "30px", lineHeight: "30px", fontSize: "0.9rem", padding: "0 5px", cursor: "pointer", opacity: 0.75, borderRadius: "5px" }}>
-                            {item.link ? item.target ? <Link target='_blank' href={item.link} >{item.name}</Link> : <Link href={item.link} >{item.name}</Link> : item.name}
-                        </div>) : null
+                        item.link ?
+                            <Link href={item.link} key={index}>
+                                <div className='hover-title' key={index}
+                                    style={{ height: "30px", lineHeight: "30px", fontSize: "0.9rem", padding: "0 5px", cursor: "pointer", opacity: 0.75, borderRadius: "5px" }}>
+                                    {item.name}</div></Link> :
+                            <div className='hover-title' key={index}
+                                style={{ height: "30px", lineHeight: "30px", fontSize: "0.9rem", padding: "0 5px", cursor: "pointer", opacity: 0.75, borderRadius: "5px" }}>
+                                {item.name}</div>
+                    ) : null
                 }
             </div>
         </div>

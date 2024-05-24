@@ -5,7 +5,7 @@ import Provider from "@/redux/component/provider";
 const font = Roboto_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Locpham",
+  title: { template: "Locpham | %s", default: "Locpham" },
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={font.className + " scrollbar-none min-height-100vh"}>
         <Provider>
           {children}
         </Provider>

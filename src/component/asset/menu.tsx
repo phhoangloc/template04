@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import Accordion from '../tool/accordion';
 import ItemButton from '../tool/itemButton';
