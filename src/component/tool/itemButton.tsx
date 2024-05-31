@@ -3,7 +3,6 @@ import React from 'react'
 type Props = {
     title: string,
     width?: string,
-
 }
 
 const ItemButton = ({ title, width }: Props) => {

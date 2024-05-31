@@ -16,7 +16,7 @@ type Props = {
 const UploadPicturePreview = ({ size, src, icon, func, loading, imgstyle, iconStyle }: Props) => {
 
     return (
-        <div style={{ height: "100%" }}>
+        <div style={{ height: "100%", position: "relative" }}>
             <div style={{ height: "100%", position: "relative" }}>
                 <Image src={src} alt='pic' unoptimized fill style={imgstyle || { objectFit: "cover", opacity: "1" }} priority={true} />
             </div>

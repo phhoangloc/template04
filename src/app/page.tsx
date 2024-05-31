@@ -13,7 +13,8 @@ const Page = () => {
     {
       name: "app",
       child: [
-        { name: "blog", link: "/blog" },
+        { name: "home", link: "/home" },
+        { name: "blog", link: "/home/blog" },
       ]
     },
     {

@@ -1,13 +1,12 @@
-
+import ItemEdit from '@/component/display/ItemEdit'
 import React from 'react'
 
 type Props = {
     params: { slug: string }
 }
+
 const Page = ({ params }: Props) => {
-    return (
-        <div>id:{params.slug}</div>
-    )
+    return <ItemEdit archive='blog' slug={params.slug} />
 }
 
 export default Page

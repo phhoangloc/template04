@@ -28,6 +28,10 @@ svg:hover {
 }
 
 /* witdth */
+.width-100vw {
+    width: 100vw;
+}
+
 .width-100p {
     width: 100%;
 }
@@ -101,6 +105,10 @@ svg:hover {
 /* overflow */
 .overflow-hidden {
     overflow: hidden;
+}
+
+.overflow-auto {
+    overflow: auto;
 }
 
 .flex-direction-column {

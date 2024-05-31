@@ -32,16 +32,43 @@ const TextAreaTool = ({ onChange, name, value }: Props) => {
     const [imglink, setImgLink] = useState<string>("")
     const [link, setLink] = useState<string>("")
 
+
     const createText = (value: string) => {
+
         const child = inputRef.current.childNodes[x]
-        child ? textSelect ? child.innerHTML = `<${value}>${textSelect}</${value}>` : null : inputRef.current.innerHTML += `<div><${value}>${value}</${value}></div>`
+        if (inputRef?.current.innerText.trim() === "") {
+            inputRef.current.innerHTML += `<div><${value}>${value}</${value}></div>`
+        } else {
+            if (textSelect) {
+                child.innerHTML = `<${value}>${textSelect}</${value}>`
+            } else {
+                if (child.innerText.trim() === "") {
+                    child.innerHTML = `<${value}>${value}</${value}>`
+                }
+            }
+
+
+        }
+
         inputRef.current ? onChange(inputRef.current.innerHTML) : null
         setTextSelect("")
     }
     const createLink = (value: string) => {
         const child = inputRef.current.childNodes[x]
-        child ? textSelect ? child.innerHTML = `<a href=${value} target="_blank">${textSelect}</a>` : child.innerHTML = `<a href=${value} target="_blank">${value}</a>` : inputRef.current.innerHTML += `<div><a href=${value} target="_blank">${value}</a></div>`
-        inputRef.current ? onChange(inputRef.current.innerHTML) : null
+        if (inputRef?.current.innerText.trim() === "") {
+            inputRef.current.innerHTML += `<div><a href=${value} target="_blank">${value}</a></div>`
+        } else {
+            if (textSelect) {
+                child.innerHTML = `<a href=${value} target="_blank">${textSelect}</a>`
+            } else {
+                if (child.innerText.trim() === "") {
+                    child.innerHTML = `<${value}>${value}</${value}>`
+                }
+            }
+            setFocusInputLink(false)
+            setLink("")
+
+        }
 
     }
     const createImage = (type: string, value: string) => {
@@ -105,7 +132,6 @@ const TextAreaTool = ({ onChange, name, value }: Props) => {
         flexWrap: "wrap",
         paddingBottom: "10px",
         boxShadow: "0px 1px 1px -1px #888",
-        margin: "0 5px",
 
     }
     const buttonStyle: React.CSSProperties = {
@@ -150,18 +176,20 @@ const TextAreaTool = ({ onChange, name, value }: Props) => {
         zIndex: 1,
         textAlign: "left",
         overflow: "auto",
-        borderRadius: "5px",
         opacity: 0.75,
+        boxShadow: "0px 1px 1px -1px #888",
+
     }
 
     const inputBoxFocus: React.CSSProperties = {
         height: "calc(100vh - 150px)",
         margin: "10px",
-        padding: "5px",
+        padding: "10px 5px",
         textAlign: "left",
         overflow: "auto",
-        borderRadius: "5px",
         opacity: 1,
+        boxShadow: "0px 1px 1px -1px #888",
+
     }
 
     return (

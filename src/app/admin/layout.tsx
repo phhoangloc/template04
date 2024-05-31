@@ -19,10 +19,11 @@ const layout = ({ children }: Props) => {
             child: [
                 { name: "default", link: "/admin" },
                 { name: "media", link: "/admin/media" },
+                { name: "profile", link: "/admin/profile" },
             ]
         },
         {
-            name: "blog",
+            name: "blogs",
             child: [
                 { name: "new blog", link: "/admin/blog/new" },
                 { name: "blogs", link: "/admin/blog" },
@@ -32,7 +33,6 @@ const layout = ({ children }: Props) => {
             name: "users",
             child: [
                 { name: "users", link: "/admin/user" },
-                { name: "profile", link: "/admin/profile" },
             ]
         },
     ]

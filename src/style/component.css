@@ -6,7 +6,6 @@
 
 .inputFocusOutlineNone:focus {
     outline: none;
-
 }
 
 .hover-opacity-1:hover {
@@ -20,6 +19,11 @@
 .hover-title:hover {
     opacity: 1 !important;
     background-color: rgba(128, 128, 128, 0.1);
+}
+
+.hover-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px -5px #888;
 }
 
 .dangerousBox img {
